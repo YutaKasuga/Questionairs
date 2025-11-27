@@ -7,7 +7,14 @@ class Question{
     public Question(String question,String answer, String type){
         this._question = question;
         this._answer = answer;
-        this._type = type;
+
+        // only type is optional setting at the moment
+        if (!type.isEmpty()){
+            this._type = type;
+        } else {
+            this._type = "";
+        }
+
     }
 
     public String getAnswer(){
@@ -32,6 +39,18 @@ class Question{
 
     public void setType(String type){
         this._type = type;
+    }
+
+    public boolean checkQuestion(){
+        if (this.getAnswer().isEmpty() | this.getQuestion().isEmpty()){
+            System.out.println("You need to fill both of question and answer...");
+            return false;
+        } else {
+            if (this.getType().isEmpty()){
+                System.out.println("The type is empty... but it is ok to make a question.");
+            }
+            return true;
+        }
     }
 
 }
